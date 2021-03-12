@@ -12,8 +12,6 @@ const BarChart = () => {
             .then((res) => {
                 res.data.prices.forEach((price) => {
                     let timestamp = moment(price[0]).format('MMMM Do YYYY, h:mm:ss a');
-                    //1293683278
-                    //1615536248289
 
                     prices.push(price[1].toFixed(2));
                     time.push(timestamp);
@@ -54,6 +52,8 @@ const BarChart = () => {
                     },
                     tooltips: {
                         backgroundColor: '#15171c',
+                        mode: 'index',
+                        intersect: false,
                     },
                     elements: {
                         line: {

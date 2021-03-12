@@ -14,7 +14,7 @@ function App() {
       <Sidebar />
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/overview" exact component={BarChart} />
+        <Route path="/chart" exact component={BarChart} />
         <Route path="/overview/users" exact component={Users} />
         <Route path="/reports" exact component={Reports} />
         <Route component={NotFound}/>
