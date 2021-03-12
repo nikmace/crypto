@@ -7,13 +7,13 @@ import * as RiIcons from 'react-icons/ri';
 export const SidebarData = [
     {
         title: 'Main',
-        path: '/main',
+        path: '/',
         icon: <AiIcons.AiFillHome />,
     },
     {
         title: 'Overview',
         path: '/overview',
-        icon: <AiIcons.AiFillHome />,
+        icon: <AiIcons.AiOutlineLineChart />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 

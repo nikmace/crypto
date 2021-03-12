@@ -12,7 +12,8 @@
 .products,
 .team,
 .reports,
-.users {
+.users,
+.notfound {
   display: flex;
   height: 90vh;
   align-items: center;
