@@ -1,9 +1,18 @@
 import React from 'react';
-import './Coin.css'
+import './Coin.css';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-function Coin({ image, name, symbol, price, volume, priceChange, marketcap }) {
+const CoinLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
+`
+
+function Coin({ id, image, name, symbol, price, volume, priceChange, marketcap }) {
     return (
+        
         <div className="coin-container">
+            <CoinLink to={`/coins/${id}`}>
             <div className="coin-row">
                 <div className="coin">
                     <img src={image} alt="crypto"/>
@@ -23,6 +32,7 @@ function Coin({ image, name, symbol, price, volume, priceChange, marketcap }) {
                     </p>
                 </div>
             </div>
+            </CoinLink>
         </div>
     )
 }

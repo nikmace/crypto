@@ -41,6 +41,7 @@ function Main() {
                         marketcap={coin.market_cap} 
                         priceChange={coin.price_change_percentage_24h}
                         volume={coin.total_volume} 
+                        id={coin.id}
                     />
                 )
             })}     

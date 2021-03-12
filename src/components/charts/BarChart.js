@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
+import * as ReactBootStrap from 'react-bootstrap';
 
-const BarChart = () => {
+const BarChart = ({ id }) => {
     let prices = [];
     let time = [];
 
-    useEffect(() => {
-        axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30')
+    function getPrices() {
+        axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`)
             .then((res) => {
                 res.data.prices.forEach((price) => {
                     let timestamp = moment(price[0]).format('MMMM Do YYYY, h:mm:ss a');
@@ -17,12 +18,18 @@ const BarChart = () => {
                     time.push(timestamp);
                 })
             })
+            .catch((err) => console.log(err));
+    }
+
+    useEffect(() => {
+        getPrices();
     }, [])
 
 
     return (
         
         <div>
+            
             <Line 
                 data={{
                     labels: time,

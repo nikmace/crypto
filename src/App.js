@@ -7,6 +7,7 @@ import Users from './pages/Users';
 import Main from './components/coins/Main';
 import BarChart from './components/charts/BarChart';
 import NotFound from './pages/NotFound';
+import CoinDetails from './pages/CoinDetails';
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <Sidebar />
       <Switch>
         <Route path="/" exact component={Main} />
-        <Route path="/chart" exact component={BarChart} />
+        <Route path="/coins/:id" exact component={CoinDetails} />
         <Route path="/overview/users" exact component={Users} />
         <Route path="/reports" exact component={Reports} />
         <Route component={NotFound}/>
