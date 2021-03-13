@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import BarChart from '../components/charts/BarChart';
+import LineChart from '../components/charts/BarChart';
 import CoinDetailsData from '../components/coins/CoinDetailsData'
 
 function CoinDetails() {
@@ -9,7 +9,7 @@ function CoinDetails() {
     return (
         <div>
             <CoinDetailsData id={id} />
-            <BarChart id={id} />
+            <LineChart id={id} />
         </div>
     )
 }

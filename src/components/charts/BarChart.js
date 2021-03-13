@@ -4,22 +4,32 @@ import axios from 'axios';
 import moment from 'moment';
 import * as ReactBootStrap from 'react-bootstrap';
 
-const BarChart = ({ id }) => {
-    let prices = [];
-    let time = [];
+const LineChart = ({ id }) => {
+    const [price, setPrice] = useState([]);
+    const [time, setTime] = useState([]);
 
     function getPrices() {
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`)
             .then((res) => {
+                let p = [];
+                let t = [];
                 res.data.prices.forEach((price) => {
                     let timestamp = moment(price[0]).format('MMMM Do YYYY, h:mm:ss a');
 
-                    prices.push(price[1].toFixed(2));
-                    time.push(timestamp);
+                    p.push(price[1].toFixed(2));
+                    t.push(timestamp);
                 })
+                setPrice(p);
+                setTime(t);
             })
             .catch((err) => console.log(err));
     }
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    const currId = capitalizeFirstLetter(id);
 
     useEffect(() => {
         getPrices();
@@ -35,8 +45,8 @@ const BarChart = ({ id }) => {
                     labels: time,
                     datasets: [
                         {
-                            labels: 'price change',
-                            data: prices,
+                            label: 'Price change',
+                            data: price,
                         }
                     ]
                 }}
@@ -54,7 +64,7 @@ const BarChart = ({ id }) => {
                     },
                     title: {
                         display: true,
-                        text: 'Bitcoin Price',
+                        text: `${currId} Price`,
                         fontSize: 22,
                     },
                     tooltips: {
@@ -79,10 +89,28 @@ const BarChart = ({ id }) => {
                         animationDuration: 0,
                     },
                     responsiveAnimationDuration: 0,
+                    responsive: true,
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    autoSkip: true,
+                                }
+                            }
+                        ],
+                        xAxes: [
+                            {
+                                ticks: {
+                                    display: false,
+                                },
+                                display: false,
+                            }
+                        ]
+                    }
                 }}
             />
         </div>
     )
 }
 
-export default BarChart;
+export default LineChart;

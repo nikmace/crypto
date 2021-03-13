@@ -1,11 +1,9 @@
 import './App.css';
 import Sidebar from './components/sidebar/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Overview from './pages/Overview';
 import Reports from './pages/Reports';
 import Users from './pages/Users';
 import Main from './components/coins/Main';
-import BarChart from './components/charts/BarChart';
 import NotFound from './pages/NotFound';
 import CoinDetails from './pages/CoinDetails';
 
