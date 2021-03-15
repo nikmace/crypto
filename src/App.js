@@ -6,6 +6,7 @@ import Users from './pages/Users';
 import Main from './components/coins/Main';
 import NotFound from './pages/NotFound';
 import CoinDetails from './pages/CoinDetails';
+import News from './pages/news/News';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact component={Main} />
         <Route path="/coins/:id" exact component={CoinDetails} />
         <Route path="/overview/users" exact component={Users} />
+        <Route path="/news" exact component={News} />
         <Route path="/reports" exact component={Reports} />
         <Route component={NotFound}/>
       </Switch>

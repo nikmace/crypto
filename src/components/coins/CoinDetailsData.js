@@ -25,11 +25,11 @@ const CoinDiv = styled.div`
     min-width: 300px;
 `;
 
-const CoinImg = styled.img`
-    height: 30px;
-    width: 30px;
-    margin-right: 10px;
-`;
+// const CoinImg = styled.img`
+//     height: 30px;
+//     width: 30px;
+//     margin-right: 10px;
+// `;
 
 function CoinDetailsData({ id }) {
     const [coins, setCoins] = useState({});
@@ -47,7 +47,7 @@ function CoinDetailsData({ id }) {
             
     }, [id]);
 
-    const { image, name, block_time_in_minutes, hashing_algorithm,  categories, market_data, genesis_date, market_cap_rank, last_updated } = coins;
+    const {  name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank, last_updated } = coins;
     return (
         
         <ContainerDiv>

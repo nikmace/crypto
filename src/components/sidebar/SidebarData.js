@@ -11,21 +11,21 @@ export const SidebarData = [
         icon: <AiIcons.AiFillHome />,
     },
     {
-        title: 'Chart',
-        path: '/chart',
+        title: 'News',
+        path: '/news',
         icon: <AiIcons.AiOutlineLineChart />,
         iconClosed: <RiIcons.RiArrowDownSFill />,
         iconOpened: <RiIcons.RiArrowUpSFill />,
 
         subNav: [
             {
-                title: 'Users',
-                path: '/overview/users',
+                title: 'Finance',
+                path: '/news/finance',
                 icon: <IoIcons.IoIosPaper />,
             },
             {
                 title: 'Revenue',
-                path: '/overview/revenue',
+                path: '/news/revenue',
                 icon: <IoIcons.IoIosPaper />,
             },
         ]
@@ -39,7 +39,7 @@ export const SidebarData = [
 
         subNav: [
             {
-                title: 'Report ',
+                title: 'Report 1',
                 path: '/reports/report1',
                 icon: <IoIcons.IoIosPaper />,
             },

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import moment from 'moment';
-import * as ReactBootStrap from 'react-bootstrap';
 
 const LineChart = ({ id }) => {
     const [price, setPrice] = useState([]);
@@ -33,7 +32,7 @@ const LineChart = ({ id }) => {
 
     useEffect(() => {
         getPrices();
-    }, [])
+    }, []);
 
 
     return (
