@@ -9,11 +9,16 @@ function isAuth() {
             if (err) {
                 console.log(err)
             } 
-            email = decoded.email
+            email = decoded.email;
+            
+            return {
+                isAuth: true,
+                email,
+            }
         }) 
-    }
+    } 
     return {
-        isAuth: true,
+        isAuth: false,
         email,
     }
 }

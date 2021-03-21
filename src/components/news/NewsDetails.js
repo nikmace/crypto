@@ -6,7 +6,7 @@ import axios from 'axios';
 const options = {
     method: 'GET',
     url: 'https://newscatcher.p.rapidapi.com/v1/search_free',
-    params: {q: 'cryptocurrency', lang: 'en', media: 'True'},
+    params: {q: 'crypto', lang: 'en', page_size: '60', media: 'True'},
     headers: {
       'x-rapidapi-key': '02c419759amshd936e3e8cbb7135p1de311jsncdd835665834',
       'x-rapidapi-host': 'newscatcher.p.rapidapi.com'

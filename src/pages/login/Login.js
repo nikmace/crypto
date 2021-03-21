@@ -68,7 +68,6 @@ function Login() {
                 Cookies.set('token', token, { expires: 1, secure: false });
                 clearInputs();
             } else {
-                Cookies.remove('token');
                 setUser('');
             }
         });

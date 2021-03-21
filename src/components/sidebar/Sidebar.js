@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
@@ -6,6 +6,9 @@ import * as AiIcons from 'react-icons/ai';
 import SubMenu from './SubMenu';
 import {SidebarData} from './SidebarData';
 import fire from 'firebase';
+import isAuth from '../login/auth/isAuth';
+import Cookies from 'js-cookie';
+
 
 const Nav = styled.div`
     background: #15171c;
@@ -66,23 +69,34 @@ const LoginDiv = styled.div`
 
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
-
+    const [auth, setAuth] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
 
     const handleLogout = () => {
         fire.auth().signOut();
+        Cookies.remove('token');
+        setAuth('')
     };
 
+    useEffect(() => {
+        const user = isAuth();
+        setAuth(user.email);
+    }, [])
+    
+    
+    
     return (
         <>
             <Nav to="#">
                 <NavIcon>
-                    <FaIcons.FaBars onClick={showSidebar}/>
-                    
+                    <FaIcons.FaBars onClick={showSidebar}/>                
                 </NavIcon>
                 <LoginDiv>
-                <LoginLink to="/auth/login">Login</LoginLink>
-                <LoginLink to="/" onClick={handleLogout}>Logout</LoginLink>
+                    {auth ? (
+                        <LoginLink to="/" onClick={handleLogout} >Logout</LoginLink>
+                    ) : (
+                        <LoginLink to="/auth/login">Login</LoginLink>
+                    )}
                 </LoginDiv>
             </Nav>
             <SidebarNav sidebar={sidebar} >
