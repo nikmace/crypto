@@ -31,33 +31,14 @@ export const SidebarData = [
         ]
     },
     {
-        title: 'Reports',
-        path: '/reports',
+        title: 'Watchlist',
+        path: '/watchlist',
         icon: <AiIcons.AiFillHome />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
-
-        subNav: [
-            {
-                title: 'Report 1',
-                path: '/reports/report1',
-                icon: <IoIcons.IoIosPaper />,
-            },
-            {
-                title: 'Report 2',
-                path: '/overview/report2',
-                icon: <IoIcons.IoIosPaper />,
-            },
-            {
-                title: 'Report 3',
-                path: '/overview/report3',
-                icon: <IoIcons.IoIosPaper />,
-            },
-        ]
+        
     },
     {
-        title: 'Products',
-        path: '/products',
+        title: 'About',
+        path: '/about',
         icon: <FaIcons.FaCartPlus />,
     }
 ]

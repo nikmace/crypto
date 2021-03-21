@@ -5,6 +5,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import SubMenu from './SubMenu';
 import {SidebarData} from './SidebarData';
+import fire from 'firebase';
 
 const Nav = styled.div`
     background: #15171c;
@@ -41,17 +42,48 @@ const SidebarWrap = styled.div`
     width: 100%;
 `;
 
+const LoginLink = styled(Link)`
+     padding: 0.1em 0.8em;
+     margin: 0;
+     border-radius: 2em;
+     box-sizing: border-box;
+     text-decoration: none;
+     font-family: 'Roboto',sans-serif;
+     font-weight: 300;
+     color: #FFFFFF;
+     background-color: #632ce4;
+     text-align: center;
+     transition: all 0.2s;
+    font-size: 20px;
+`;
+
+const LoginDiv = styled.div`
+    margin-left: 10rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 15px;
+`;
+
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
 
     const showSidebar = () => setSidebar(!sidebar);
 
+    const handleLogout = () => {
+        fire.auth().signOut();
+    };
+
     return (
         <>
-            <Nav>
-                <NavIcon to="#">
+            <Nav to="#">
+                <NavIcon>
                     <FaIcons.FaBars onClick={showSidebar}/>
+                    
                 </NavIcon>
+                <LoginDiv>
+                <LoginLink to="/auth/login">Login</LoginLink>
+                <LoginLink to="/" onClick={handleLogout}>Logout</LoginLink>
+                </LoginDiv>
             </Nav>
             <SidebarNav sidebar={sidebar} >
                 <SidebarWrap >                  

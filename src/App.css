@@ -13,7 +13,9 @@
 .team,
 .reports,
 .users,
-.notfound {
+.notfound 
+.about 
+.watchlist {
   display: flex;
   height: 90vh;
   align-items: center;
