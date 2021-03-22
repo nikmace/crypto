@@ -19,13 +19,8 @@ export const SidebarData = [
 
         subNav: [
             {
-                title: 'Finance',
-                path: '/news/finance',
-                icon: <IoIcons.IoIosPaper />,
-            },
-            {
-                title: 'Revenue',
-                path: '/news/revenue',
+                title: 'A.I',
+                path: '/news/ai',
                 icon: <IoIcons.IoIosPaper />,
             },
         ]
