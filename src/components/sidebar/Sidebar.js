@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
@@ -78,12 +78,27 @@ function Sidebar() {
         setAuth('')
     };
 
+    
+    // function useEffectOnce(callback) {
+    //     const didRun = useRef(false);
+
+    //     useEffect(() => {
+    //         if (!didRun.current) {
+    //             callback();
+    //             didRun.current = true;
+    //         }
+    //     });
+    // }
+
+
+    // useEffectOnce(() => {
+    //     const user = isAuth();
+    //     setAuth(user.email);
+    // });    
     useEffect(() => {
         const user = isAuth();
         setAuth(user.email);
-    }, [])
-    
-    
+    }, [auth])
     
     return (
         <>

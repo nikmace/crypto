@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
 import './news.css';
 import axios from 'axios';
+import Loader from '../loader/Loader';
 
 const options = {
     method: 'GET',
@@ -14,9 +15,13 @@ const options = {
 };
 
 function NewsDetails() {
-    const [articles, setArticles] = useState([])
+    const [articles, setArticles] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-    function getNews() {
+    
+    
+    useEffect(() => {
+        setLoading(true);
         axios
             .request(options)
             .then((res) => {
@@ -24,10 +29,9 @@ function NewsDetails() {
         }).catch((err) => {
             console.error(err);
         });
-    }
-    
-    useEffect(() => {
-        getNews();
+        setTimeout(() => {
+            setLoading(false);
+        }, 1500);
     }, []);
 
     return (
@@ -37,22 +41,26 @@ function NewsDetails() {
                     <h1>Fresh Finance News</h1>
                 </div>
                 
-                <div className="column-card">                   
-                    {articles.map((article) => {
-                        return (
-                            <NewsCard 
-                                summary={article.summary}
-                                published={article.published_date}
-                                rank={article.rank}
-                                clean_url={article.clean_url}
-                                author={article.author} 
-                                link={article.link} 
-                                media={article.media}
-                                title={article.title} 
-                                topic={article.topic} 
-                                key={article.id} />
-                        )
-                    })}
+                <div className="column-card">
+                    {loading ? (
+                        <Loader />
+                    ): (
+                        articles.map((article) => {
+                            return (
+                                <NewsCard 
+                                    summary={article.summary}
+                                    published={article.published_date}
+                                    rank={article.rank}
+                                    clean_url={article.clean_url}
+                                    author={article.author} 
+                                    link={article.link} 
+                                    media={article.media}
+                                    title={article.title} 
+                                    topic={article.topic} 
+                                    key={article.id} />
+                            )
+                        })
+                    )}                   
                 </div>
             </div>
     )
