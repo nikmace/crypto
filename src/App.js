@@ -2,7 +2,7 @@ import './App.css';
 import Sidebar from './components/sidebar/Sidebar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './components/coins/Main';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/not-found/NotFound';
 import CoinDetails from './pages/CoinDetails';
 import News from './pages/news/News';
 import AI from './pages/news/AI';

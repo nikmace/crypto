@@ -46,7 +46,7 @@ const SidebarWrap = styled.div`
 `;
 
 const LoginLink = styled(Link)`
-     padding: 0.1em 0.8em;
+     padding: 0.3em 0.7em;
      margin: 0;
      border-radius: 2em;
      box-sizing: border-box;
@@ -61,11 +61,16 @@ const LoginLink = styled(Link)`
 `;
 
 const LoginDiv = styled.div`
-    margin-left: 10rem;
+    margin-left: 5rem;
     display: grid;
     grid-auto-flow: column;
     grid-column-gap: 15px;
 `;
+
+const SiteNameH1 = styled.h1`
+    color: #f5f5f5;
+    margin-left: 5rem;
+`
 
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
@@ -106,6 +111,12 @@ function Sidebar() {
                 <NavIcon>
                     <FaIcons.FaBars onClick={showSidebar}/>                
                 </NavIcon>
+                <Link to="/">
+                    <SiteNameH1>
+                        crypto
+                    </SiteNameH1>
+                </Link>
+                
                 <LoginDiv>
                     {auth ? (
                         <LoginLink to="/" onClick={handleLogout} >Logout</LoginLink>
