@@ -1,6 +1,7 @@
 import React from 'react';
 import isAuth from '../components/login/auth/isAuth';
 import TransactionsTable from '../components/crypto-wallet/transactions/TransactionsTable';
+import Unauthorized from './not-found/Unauthorized';
 
 function Wallet() {
     const {email} = isAuth();
@@ -8,7 +9,7 @@ function Wallet() {
 
     return (
         <div className="watchlist">
-            <h1>Watchlist</h1>
+            <h1>Wallet</h1>
             {email ? (
                 <>
                     <h1>Here is your list of coins  {email}</h1>
@@ -16,8 +17,7 @@ function Wallet() {
                 </>
             ) : (
                 <>
-                    <h1>You are not logged in and cannot view this page</h1>
-                    
+                    <Unauthorized />
                 </>
             )}
         </div>

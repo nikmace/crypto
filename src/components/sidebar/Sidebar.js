@@ -57,7 +57,7 @@ const LoginLink = styled(Link)`
      background-color: #632ce4;
      text-align: center;
      transition: all 0.2s;
-    font-size: 20px;
+    font-size: 20px; 
 `;
 
 const LoginDiv = styled.div`
