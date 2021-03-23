@@ -26,8 +26,8 @@ export const SidebarData = [
         ]
     },
     {
-        title: 'Watchlist',
-        path: '/watchlist',
+        title: 'Wallet',
+        path: '/wallet',
         icon: <AiIcons.AiFillHome />,
         
     },
