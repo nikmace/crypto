@@ -38,16 +38,16 @@ function LoginUser(props) {
                 <div className="btnContainer" >
                     {hasAccount ? (
                         <>
-                            <button onClick={handleLogin}>Sign In</button>
+                            <button onClick={handleLogin}>Login</button>
                             <p>Don't have an account? 
-                                <span onClick={() => setHasAccount(!hasAccount)}>Sign Up</span>
+                                <span onClick={() => setHasAccount(!hasAccount)}>Register</span>
                             </p>
                         </>
                     ) : (
                         <>
-                            <button onClick={handleSignUp}>Sign Up</button>
+                            <button onClick={handleSignUp}>Register</button>
                             <p>Have an account? 
-                                <span onClick={() => setHasAccount(!hasAccount)}>Sign In</span>
+                                <span onClick={() => setHasAccount(!hasAccount)}>Login</span>
                             </p>
                         </>
                     )}

@@ -57,7 +57,11 @@ const LoginLink = styled(Link)`
      background-color: #632ce4;
      text-align: center;
      transition: all 0.2s;
-    font-size: 20px; 
+    font-size: 20px;
+    
+    &:hover {
+        background: #8759f2;
+    }
 `;
 
 const LoginDiv = styled.div`
@@ -70,7 +74,7 @@ const LoginDiv = styled.div`
 const SiteNameH1 = styled.h1`
     color: #f5f5f5;
     margin-left: 5rem;
-`
+`;
 
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
@@ -84,22 +88,6 @@ function Sidebar() {
     };
 
     
-    // function useEffectOnce(callback) {
-    //     const didRun = useRef(false);
-
-    //     useEffect(() => {
-    //         if (!didRun.current) {
-    //             callback();
-    //             didRun.current = true;
-    //         }
-    //     });
-    // }
-
-
-    // useEffectOnce(() => {
-    //     const user = isAuth();
-    //     setAuth(user.email);
-    // });    
     useEffect(() => {
         const user = isAuth();
         setAuth(user.email);
