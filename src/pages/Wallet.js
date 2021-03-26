@@ -12,7 +12,8 @@ function Wallet() {
             <h1>Wallet</h1>
             {email ? (
                 <>
-                    <h1>Here is your list of coins  {email}</h1>
+                    <h1>You can now search a Bitcoin address in the Blockchain {email}</h1>
+                    <p style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>Paste the address into the field below</p>
                     <WalletDetails />
                     
                 </>

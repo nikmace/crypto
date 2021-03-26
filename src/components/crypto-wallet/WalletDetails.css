@@ -1,7 +1,7 @@
 .wallet-details {
     width: 80%;
     justify-content: center;
-    height: 500px;
+    height: 350px;
     margin: 0 auto;
 }
 
@@ -19,7 +19,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black;
     height: 50px;
 }
 
@@ -42,4 +41,19 @@
 
 .wallet-info {
     height: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.wallet-info-main {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 5rem;
+}
+
+.wallet-info span {
+    display: inline-block;
+    margin-right: 20px;
+    margin-right: 30px;
 }
