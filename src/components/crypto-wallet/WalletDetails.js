@@ -31,6 +31,9 @@ function WalletDetails() {
     const handleChange = (e) => {
         e.preventDefault();
         setLoading(true);
+        setSuccess(false)
+        setConfirmed({})
+        setTransactions([]);
         setSearch(e.target.value);
     }
     
@@ -43,27 +46,27 @@ function WalletDetails() {
                         setSuccess(res.data.success);
                         setConfirmed(res.data.address.confirmed);
                         setTransactions(res.data.address.transactions);
-                        
+                        setLoading(false);  
                     })
                     .catch((err) => {
                         console.log(err);
-                        setError(err)
+                        setError(err);
+                        setLoading(false);
+                        setSearch('')
                     });
-                    
-            setLoading(false);  
         }
+        
         if (search === '') {
+            setSearch('');
             setSuccess(false)
             setConfirmed({})
             setTransactions([]);
             setLoading(false);
         }
-    }, [search])
+        
+    }, [search]);
 
-    console.log(confirmed);
-    console.log(search)
-    console.log(error.message)
-    console.log("Loading : " + loading)
+    
 
     return (
         <>
@@ -71,7 +74,7 @@ function WalletDetails() {
             <div className="wallet">
                 <div className="wallet-search">
                     <form>
-                        <input type="text" className="wallet-input" onChange={handleChange}/>
+                        <input type="text" className="wallet-input" disabled={loading} onChange={handleChange}/>
                     </form>
                 </div>
                 {success ? (
@@ -89,7 +92,7 @@ function WalletDetails() {
                     {error.message ? (
                         <div 
                             style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}
-                        >The Bitcoin Address was not found or the input adress was invalid</div>
+                        >The Bitcoin Address was not found or the input address was invalid</div>
                     ) : (
                         <h2 
                             style={{justifyContent: 'center', alignItems: 'center', display: 'flex'}}

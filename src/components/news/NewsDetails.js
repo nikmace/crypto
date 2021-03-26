@@ -26,12 +26,11 @@ function NewsDetails() {
             .request(options)
             .then((res) => {
             setArticles(res.data.articles);
-        }).catch((err) => {
+            setLoading(false);
+        })
+        .catch((err) => {
             console.error(err);
         });
-        setTimeout(() => {
-            setLoading(false);
-        }, 1500);
     }, []);
 
     return (

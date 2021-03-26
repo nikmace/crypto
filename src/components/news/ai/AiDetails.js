@@ -19,14 +19,15 @@ function AiDetails() {
 
     useEffect(() => {
         setLoading(true);
-        axios.request(options).then(function (response) {
-            setArticles(response.data.value);
-        }).catch(function (error) {
-            console.error(error);
-        });
-        setTimeout(() => {
-            setLoading(false);
-        }, 1500);
+        axios
+            .request(options)
+            .then(function (response) {
+                setArticles(response.data.value);
+                setLoading(false);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
     }, []);
 
     const filteredArticles = articles.filter(article => 
