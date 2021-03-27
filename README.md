@@ -3,10 +3,9 @@
 A web application made with React, CryptoCurrency API, Chart.js
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/nikmace/crypto)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues-raw/nikmace/crypto?logo=Visual%20Studio)
 ![GitHub](https://img.shields.io/github/license/nikmace/crypto?color=brightgreen)
 ![GitHub last commit](https://img.shields.io/github/last-commit/nikmace/crypto?color=yellow&logo=JavaScript)
-![GitHub issues](https://img.shields.io/github/issues/nikmace/crypto?color=important)
+![GitHub issues](https://img.shields.io/github/issues/nikmace/crypto?color=important&logo=Visual%20Studio)
 
 ## Getting started
 These instructions will help you to run the project. 
@@ -19,6 +18,15 @@ npm start
 - [React Router](https://www.npmjs.com/package/handlebars) 
 - [Chart.js](https://www.chartjs.org/)
 - [CoinGecko API](https://www.coingecko.com/en/api) 
+- [Axios]()
+- [Moment]()
+- [Chart.js]()
+- [Firebase]()
+- [JS-cookie]()
+- [JWT]()
+- [React-bootstrap]()
+- [React-chartjs-2]()
+- [Material UI]()
 
 ## Authors
 - Nikita Baranov - Initial work

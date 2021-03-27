@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import './CoinDetails.css';
+import moment from 'moment';
+import Loader from '../loader/Loader';
 
 const ContainerDiv = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 20rem;
 `;
 
 const DetailColumn = styled.div`
@@ -15,25 +18,15 @@ const DetailColumn = styled.div`
     justify-content: start;
     align-items: center;
     border:2px solid black;
-
+    margin-bottom: 100px;
 `;
-
-const CoinDiv = styled.div`
-    display: flex;
-    align-items: center;
-    padding-right: 24px;
-    min-width: 300px;
-`;
-
-// const CoinImg = styled.img`
-//     height: 30px;
-//     width: 30px;
-//     margin-right: 10px;
-// `;
 
 function CoinDetailsData({ id }) {
     const [coins, setCoins] = useState({});
     const [loading, setLoading] = useState(false);
+
+    let date = new Date().getTime();
+    date = moment(date).format('MMMM Do YYYY, h:mm:ss a');
 
     useEffect(() => {
         setLoading(true);
@@ -48,48 +41,43 @@ function CoinDetailsData({ id }) {
     }, [id]);
 
     const {  name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank, last_updated } = coins;
+    
     return (
-        
+        <>
         <ContainerDiv>
             <DetailColumn>
-                {loading 
-                ? (
-                    <h1>Loading...</h1>
-                ) : (
-                    <>
-                    <CoinDiv>
-                    <h1>{name}</h1> 
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Block mining time in min: &nbsp;</h4> {block_time_in_minutes}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Hashing algorithm: &nbsp;</h4> {hashing_algorithm ? hashing_algorithm : 'none'}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Category: &nbsp;</h4> {categories ? categories : 'Crypto'}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Current price: &nbsp;</h4> {}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Description: &nbsp;</h4> <p>{}</p>
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Mkt cap rank: &nbsp;</h4> {market_cap_rank ? market_cap_rank : 'not stated'}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Genesis date: &nbsp;</h4> {genesis_date ? genesis_date : 'not stated'}
-                    </CoinDiv>
-                    <CoinDiv>
-                        <h4>Last updated: &nbsp;</h4> {last_updated}
-                    </CoinDiv> 
-                    </>
-                )
-                }
                 
             </DetailColumn>
+            <div className="blog-card">
+                <div className="inner-part">
+                    <label for="imgTap" class="img">
+                        <img className="img-1" src="https://www.finance-monthly.com/Finance-Monthly/wp-content/uploads/2020/10/Bitcoin-and-alt-coins-cryptocurrency.jpg" />
+                    </label>
+                    <div className="content">
+                        <span>{date}</span>
+                    <div className="title">
+                        {name}
+                    </div>
+                    <div className="text">
+                        {loading ? (
+                            <Loader />
+                        ) : (
+                            <>
+                                <p>Block mining time in min: &nbsp; {block_time_in_minutes}</p>
+                                <p>Hashing algorithm: &nbsp; {hashing_algorithm ? hashing_algorithm : 'none'}</p>
+                                <p>Category: &nbsp; {categories ? categories : 'Crypto'}</p>
+                                <p>Mkt cap rank: &nbsp; {market_cap_rank ? market_cap_rank : 'not stated'}</p>
+                                <p>Genesis date: &nbsp; {genesis_date ? genesis_date : 'not stated'}</p>
+                                <p>Last updated: &nbsp; {last_updated}</p>
+                            </>
+                        )}
+
+                    </div>
+                    </div>
+                </div>
+            </div>              
         </ContainerDiv>
+        </>
     )
 }
 

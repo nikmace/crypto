@@ -57,7 +57,6 @@ function WalletDetails() {
         }
         
         if (search === '') {
-            setSearch('');
             setSuccess(false)
             setConfirmed({})
             setTransactions([]);
