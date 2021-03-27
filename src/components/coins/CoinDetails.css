@@ -1,8 +1,8 @@
-.blog-card{
+.b-card{
     position: absolute;
-    height: 370px;
-    width: 60%;
-    max-width: 900px;
+    height: 500px;
+    width: 80%;
+    max-width: 1000px;
     margin: 0 auto;
     border-radius: 25px;
     background: #fff;
@@ -10,17 +10,16 @@
     margin-bottom: 100px;
 }
   .inner-part{
-    position: absolute;
     display: flex;
-    height: 360px;
+    height: 500px;
     align-items: center;
     justify-content: center;
     padding: 0 25px;
   }
  
   .inner-part .img{
-    height: 260px;
-    width: 260px;
+    height: 300px;
+    width: 300px;
     flex-shrink: 0;
     overflow: hidden;
     border-radius: 20px;
@@ -57,35 +56,20 @@
     color: #0d0925;
     margin-bottom: 20px;
     display: flex;
-    margin-top: 35px;
+    margin-top: 15px;
   }
   .content .text{
     color: #4e4a67;
     font-size: 19px;
-    margin-bottom: 30px;
     line-height: 1.5em;
     text-align: justify;
   }
 
-  .text h4 {
-    
-  }
 
-  .content button{
-    display: inline-flex;
-    padding: 15px 20px;
-    border: none;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #fff0e6;
-    font-weight: 600;
-    letter-spacing: 1px;
-    border-radius: 50px;
-    cursor: pointer;
-    outline: none;
-    border: 1px solid #fd3535;
-    background: linear-gradient(147deg, #fe8a39  0%, #fd3838 74%);
-  }
-  .content button:hover{
-    background: linear-gradient(147deg, #fe791b 0%, #fd1c1c 74%);
-  }
+.red {
+    color: #f00606;
+}
+
+.green {
+    color: #11d811;
+}

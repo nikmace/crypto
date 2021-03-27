@@ -15,15 +15,19 @@ const ContainerDiv = styled.div`
 const DetailColumn = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    border:2px solid black;
-    margin-bottom: 100px;
+    margin-top: 20rem;
+    background: #15171c;
 `;
 
 function CoinDetailsData({ id }) {
     const [coins, setCoins] = useState({});
+    const [marketData, setMarketData] = useState({});
     const [loading, setLoading] = useState(false);
+    const [description, setDescription] = useState({});
+    const [ticker, setTicker] = useState({});
+    const [price, setPrice] = useState({});
 
     let date = new Date().getTime();
     date = moment(date).format('MMMM Do YYYY, h:mm:ss a');
@@ -34,24 +38,30 @@ function CoinDetailsData({ id }) {
             .get(`https://api.coingecko.com/api/v3/coins/${id}`)
             .then((res) => {
                 setCoins(res.data);
+                setMarketData(res.data.market_data);
+                setPrice(res.data.market_data.current_price);
+                setDescription(res.data.description.en);
+                setTicker(res.data.tickers[0])
                 setLoading(false);
             })
             .catch((err) => console.log(err));
             
     }, [id]);
 
-    const {  name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank, last_updated } = coins;
-    
+    console.log(coins)
+
+    const { name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank, last_updated } = coins;
+    const { usd } = price;
+    const { price_change_24h, price_change_percentage_7d, price_change_percentage_14d, price_change_percentage_24h } = marketData;
+
     return (
         <>
         <ContainerDiv>
-            <DetailColumn>
-                
-            </DetailColumn>
-            <div className="blog-card">
+            <DetailColumn></DetailColumn>
+            <div className="b-card">
                 <div className="inner-part">
-                    <label for="imgTap" class="img">
-                        <img className="img-1" src="https://www.finance-monthly.com/Finance-Monthly/wp-content/uploads/2020/10/Bitcoin-and-alt-coins-cryptocurrency.jpg" />
+                    <label htmlFor="imgTap" className="img" >
+                        <img className="img-1" src="https://www.finance-monthly.com/Finance-Monthly/wp-content/uploads/2020/10/Bitcoin-and-alt-coins-cryptocurrency.jpg" alt="cryptocurrency"/>
                     </label>
                     <div className="content">
                         <span>{date}</span>
@@ -63,20 +73,39 @@ function CoinDetailsData({ id }) {
                             <Loader />
                         ) : (
                             <>
+                                <p>Price: &nbsp; ${usd}</p>
                                 <p>Block mining time in min: &nbsp; {block_time_in_minutes}</p>
                                 <p>Hashing algorithm: &nbsp; {hashing_algorithm ? hashing_algorithm : 'none'}</p>
                                 <p>Category: &nbsp; {categories ? categories : 'Crypto'}</p>
                                 <p>Mkt cap rank: &nbsp; {market_cap_rank ? market_cap_rank : 'not stated'}</p>
                                 <p>Genesis date: &nbsp; {genesis_date ? genesis_date : 'not stated'}</p>
-                                <p>Last updated: &nbsp; {last_updated}</p>
+                                <p>Price change 24h: </p>
+                                {price_change_percentage_24h > 0 ? (
+                                    <p className="green">{price_change_percentage_24h}%</p>
+                                ) : (
+                                    <p className="red">{price_change_percentage_24h}%</p>
+                                )}
+                                <p>Price change 7d: </p>
+                                {price_change_percentage_7d > 0 ? (
+                                    <p className="green">{price_change_percentage_7d}%</p>
+                                ) : (
+                                    <p className="red">{price_change_percentage_7d}%</p>
+                                )}
+                                <p>Price change 14d: </p>
+                                {price_change_percentage_14d > 0 ? (
+                                    <p className="green">{price_change_percentage_14d}%</p>
+                                ) : (
+                                    <p className="red">{price_change_percentage_14d}%</p>
+                                )}
                             </>
                         )}
 
                     </div>
                     </div>
                 </div>
-            </div>              
+            </div>
         </ContainerDiv>
+        
         </>
     )
 }
