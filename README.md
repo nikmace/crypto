@@ -1,5 +1,8 @@
 # Crypto Currency Application
 
+Website hosted on Netlify, link:
+[crypto](https://crypto-web.netlify.app/)
+
 A web application made with React, CryptoCurrency API, Chart.js
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/nikmace/crypto)

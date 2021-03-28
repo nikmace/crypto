@@ -1,5 +1,6 @@
 import React from 'react';
 import './news.css';
+import { Link } from 'react-router-dom';
 
 const cryptoList = [
     'bitcoin',
@@ -52,7 +53,7 @@ function NewsCard({ summary, published, rank, clean_url, author, link, title, to
                     <span className="breaker">Topic: {topic}</span>
                     <p>Author: {author ? author : 'not stated'}</p>
                     <p>Rank: {rank}</p>
-                    <div className="linkDiv">Link: &nbsp;<a href={link}><h4>{clean_url}</h4></a></div>
+                    <div className="linkDiv">Link: &nbsp;<Link to={link}><h4>{clean_url}</h4></Link></div>
                     <span className="date">Published: {published}</span>
                 </div>
             </div>
