@@ -49,7 +49,7 @@ function NewsCard({ summary, published, rank, clean_url, author, link, title, to
                 <img src={media} alt="crypto"></img>
                 <div className="panel">
                     <p id="linkId">{summary}</p>
-                    {cryptoValue ? (<span>Cryptocurrency mentioned here: <a href={cryptoLink}><h4>{cryptoValue.toUpperCase()}</h4></a></span>) : '\n'}
+                    {cryptoValue ? (<span>Cryptocurrency mentioned here: <Link to={cryptoLink}><h4>{cryptoValue.toUpperCase()}</h4></Link></span>) : '\n'}
                     <span className="breaker">Topic: {topic}</span>
                     <p>Author: {author ? author : 'not stated'}</p>
                     <p>Rank: {rank}</p>
