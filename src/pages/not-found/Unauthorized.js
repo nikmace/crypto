@@ -1,5 +1,6 @@
 import React from 'react';
 import './Unauthorized.css';
+import { Link } from 'react-router-dom';
 
 function Unauthorized() {
     return (
@@ -18,7 +19,7 @@ function Unauthorized() {
                                 
                                 <p>please login to view this page</p>
                                 
-                                <a href="/auth/login" class="link_404">Login</a>
+                                <Link to="/auth/login" class="link_404">Login</Link>
                             </div>
                         </div>
 		            </div>
