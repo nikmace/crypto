@@ -77,7 +77,7 @@ const SiteNameH1 = styled.h1`
 
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
-    const [auth, setAuth] = useState(false);
+    const [auth, setAuth] = useState('');
     const showSidebar = () => setSidebar(!sidebar);
 
     const handleLogout = () => {
@@ -86,15 +86,14 @@ function Sidebar() {
         setAuth('')
     };
 
-    
     useEffect(() => {
-        const user = isAuth();
-        setAuth(user.email);
-    }, [auth])
+        const {email} = isAuth();
+        setAuth(email);
+    })
     
     return (
         <>
-            <Nav to="#">
+            <Nav>
                 <NavIcon>
                     <FaIcons.FaBars onClick={showSidebar}/>                
                 </NavIcon>
@@ -114,7 +113,7 @@ function Sidebar() {
             </Nav>
             <SidebarNav sidebar={sidebar} >
                 <SidebarWrap >                  
-                    <NavIcon to="#">
+                    <NavIcon >
                             <AiIcons.AiOutlineClose onClick={showSidebar}/>
                     </NavIcon>
                     {SidebarData.map((item, index) => {
