@@ -38,6 +38,8 @@ function Login() {
                     case "auth/wrong-password":
                         setPasswordError(err.message);
                         break;
+                    default:
+                        break;
                 }
             });
     };
@@ -56,24 +58,26 @@ function Login() {
                     case "auth/weak-password":
                         setPasswordError(err.message);
                         break;
+                    default:
+                        break;
                 }
             });
     };
 
-    const authListener = () => {
-        fire.auth().onAuthStateChanged(user => {
-            if (user) {
-                setUser(user);
-                let token = jwt.sign({email: user.email}, 'SALAMI');
-                Cookies.set('token', token, { expires: 1, secure: false });
-                clearInputs();
-            } else {
-                setUser('');
-            }
-        });
-    };
-
+    
     useEffect(() => {
+        const authListener = () => {
+            fire.auth().onAuthStateChanged(user => {
+                if (user) {
+                    setUser(user);
+                    let token = jwt.sign({email: user.email}, 'SALAMI');
+                    Cookies.set('token', token, { expires: 1, secure: false });
+                    clearInputs();
+                } else {
+                    setUser('');
+                }
+            });
+        };
         authListener();
     }, [])
 

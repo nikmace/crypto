@@ -7,7 +7,13 @@ const LineChart = ({ id }) => {
     const [price, setPrice] = useState([]);
     const [time, setTime] = useState([]);
 
-    function getPrices() {
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    const currId = capitalizeFirstLetter(id);
+
+    useEffect(() => {
         axios.get(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30`)
             .then((res) => {
                 let p = [];
@@ -22,17 +28,7 @@ const LineChart = ({ id }) => {
                 setTime(t);
             })
             .catch((err) => console.log(err));
-    }
-
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
-    const currId = capitalizeFirstLetter(id);
-
-    useEffect(() => {
-        getPrices();
-    }, []);
+    }, [id]);
 
 
     return (

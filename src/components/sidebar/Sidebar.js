@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
@@ -89,7 +89,7 @@ function Sidebar() {
     useEffect(() => {
         const {email} = isAuth();
         setAuth(email);
-    })
+    }, [auth])
     
     return (
         <>

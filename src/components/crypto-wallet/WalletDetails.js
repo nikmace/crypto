@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './WalletDetails.css';
-import { makeStyles } from '@material-ui/core/styles';
 import TransactionsTable from './transactions/TransactionsTable';
 import axios from 'axios';
 import Loader from '../loader/Loader';
 
-const useStyles = makeStyles({
-    button: {
-        backgroundColor: '#632ce4',
-        "&:hover": {
-            backgroundColor: "#8759f2",
-        },
-        width: "30px",
-        height: "30px",
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: '2px'
-    }
-});
-
 function WalletDetails() {
-    const classes = useStyles();
     const [success, setSuccess] = useState(false);
     const [confirmed, setConfirmed] = useState({});
     const [transactions, setTransactions] = useState([]);
@@ -63,7 +47,7 @@ function WalletDetails() {
             setLoading(false);
         }
         
-    }, [search]);
+    }, [search, uri]);
 
     
 

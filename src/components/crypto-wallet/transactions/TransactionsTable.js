@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 import { Paper, Table, TableBody, TableContainer, TableHead, TableRow, TableCell } from '@material-ui/core';
@@ -53,8 +53,6 @@ const useStyles = makeStyles({
 
 function TransactionsTable({transactions, success}) {
     const classes = useStyles();
-    const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
     
     transactions.map((transaction) => {
         if (success) {
@@ -62,6 +60,7 @@ function TransactionsTable({transactions, success}) {
             let data = createData(transaction.txid, transaction.input_amount, transaction.fee, transaction.output_amount, date);
             rows.push(data);
         }
+        return true;
     });
 
     return (
@@ -82,7 +81,7 @@ function TransactionsTable({transactions, success}) {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+                {rows.slice(0, 10).map((row) => {
                 return (
                     <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {

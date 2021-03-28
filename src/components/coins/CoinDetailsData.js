@@ -25,8 +25,6 @@ function CoinDetailsData({ id }) {
     const [coins, setCoins] = useState({});
     const [marketData, setMarketData] = useState({});
     const [loading, setLoading] = useState(false);
-    const [description, setDescription] = useState({});
-    const [ticker, setTicker] = useState({});
     const [price, setPrice] = useState({});
 
     let date = new Date().getTime();
@@ -40,19 +38,15 @@ function CoinDetailsData({ id }) {
                 setCoins(res.data);
                 setMarketData(res.data.market_data);
                 setPrice(res.data.market_data.current_price);
-                setDescription(res.data.description.en);
-                setTicker(res.data.tickers[0])
                 setLoading(false);
             })
             .catch((err) => console.log(err));
             
     }, [id]);
 
-    console.log(coins)
-
-    const { name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank, last_updated } = coins;
+    const { name, block_time_in_minutes, hashing_algorithm,  categories,  genesis_date, market_cap_rank } = coins;
     const { usd } = price;
-    const { price_change_24h, price_change_percentage_7d, price_change_percentage_14d, price_change_percentage_24h } = marketData;
+    const {  price_change_percentage_7d, price_change_percentage_14d, price_change_percentage_24h } = marketData;
 
     return (
         <>
