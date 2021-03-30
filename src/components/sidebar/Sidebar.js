@@ -78,18 +78,19 @@ const SiteNameH1 = styled.h1`
 function Sidebar() {
     const [sidebar, setSidebar] = useState(false);
     const [auth, setAuth] = useState('');
+
     const showSidebar = () => setSidebar(!sidebar);
 
     const handleLogout = () => {
         fire.auth().signOut();
         Cookies.remove('token');
-        setAuth('')
+        setAuth('');
     };
 
     useEffect(() => {
         const {email} = isAuth();
         setAuth(email);
-    }, [auth])
+    }, [auth]);
     
     return (
         <>

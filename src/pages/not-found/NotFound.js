@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import '../../App.css';
 import './NotFound.css';
@@ -8,6 +9,7 @@ const NotFoundDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 8rem;
 `
 
 function NotFound() {
@@ -21,7 +23,7 @@ function NotFound() {
                         <span className="four"><span className="screen-reader-text">4</span></span>
                     </section>
                 <div className="link-container">
-                    <a href="/" className="more-link">Go back to Home</a>
+                    <Link to="/" className="more-link">Go back to Home</Link>
                 </div>
             </NotFoundDiv>
         </div>
