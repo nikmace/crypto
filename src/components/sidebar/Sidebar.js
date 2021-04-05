@@ -6,7 +6,6 @@ import * as AiIcons from 'react-icons/ai';
 import SubMenu from './SubMenu';
 import {SidebarData} from './SidebarData';
 import fire from 'firebase';
-import isAuth from '../login/auth/isAuth';
 import Cookies from 'js-cookie';
 
 
@@ -88,8 +87,16 @@ function Sidebar() {
     };
 
     useEffect(() => {
-        const {email} = isAuth();
-        setAuth(email);
+        const authListener = () => {
+            fire.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    setAuth(user.email)
+                } else {
+                    setAuth('');
+                }
+            });
+        }
+        authListener();
     }, [auth]);
     
     return (
