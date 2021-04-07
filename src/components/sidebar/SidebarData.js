@@ -1,40 +1,39 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
-import * as RiIcons from 'react-icons/ri';
+import { RiArrowDownSFill, RiArrowUpSFill } from 'react-icons/ri';
+import { FcBullish, FcHome, FcCurrencyExchange, FcElectronics, FcAbout } from 'react-icons/fc';
+
 
 export const SidebarData = [
     {
         title: 'Main',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
+        icon: <FcHome />,
     },
     {
         title: 'News',
         path: '/news',
-        icon: <AiIcons.AiOutlineLineChart />,
-        iconClosed: <RiIcons.RiArrowDownSFill />,
-        iconOpened: <RiIcons.RiArrowUpSFill />,
+        icon: <FcBullish />,
+        iconClosed: <RiArrowDownSFill />,
+        iconOpened: <RiArrowUpSFill />,
 
         subNav: [
             {
                 title: 'A.I',
                 path: '/news/ai',
-                icon: <IoIcons.IoIosPaper />,
+                icon: <FcElectronics />,
             },
         ]
     },
     {
         title: 'Wallet',
         path: '/wallet',
-        icon: <AiIcons.AiFillHome />,
+        icon: <FcCurrencyExchange />,
         
     },
     {
         title: 'About',
         path: '/about',
-        icon: <FaIcons.FaCartPlus />,
+        icon: <FcAbout />,
     }
 ]
 
